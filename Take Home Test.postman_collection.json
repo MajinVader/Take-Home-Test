@@ -1,0 +1,323 @@
+{
+	"info": {
+		"_postman_id": "c6b94761-a7b6-404c-ae58-15edb08f47ec",
+		"name": "Take Home Test",
+		"description": "Take Home Test - Backend Developer (Golang + Fiber + PostgreSQL + JWT)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25623569"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Steven\",\n  \"email\": \"steven@mail.com\",\n  \"password\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"steven@mail.com\",\n  \"password\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Fields",
+			"item": [
+				{
+					"name": "Get All Fields",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/fields",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"fields"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Field By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/fields/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"fields",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Field (Admin Only)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Lapangan Futsal A\",\n  \"price_per_hour\": 150000,\n  \"location\": \"Jl. Batununggal No. 45, Bandung\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/fields",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"fields"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Field (Admin Only)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Lapangan Futsal A - Updated\",\n  \"price_per_hour\": 160000,\n  \"location\": \"Jl. Batununggal No. 45, Bandung\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/fields/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"fields",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Field (Admin Only)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/fields/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"fields",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bookings",
+			"item": [
+				{
+					"name": "Create Booking",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"field_id\": 1,\n  \"start_time\": \"2025-11-16T10:00:00Z\",\n  \"end_time\": \"2025-11-16T12:00:00Z\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/bookings",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get My Bookings",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/my-bookings",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"my-bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Bookings (Admin Only)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/bookings",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payments",
+			"item": [
+				{
+					"name": "Pay Booking (Mock Payment)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"booking_id\": 1\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/payments",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"payments"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000"
+		},
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}
