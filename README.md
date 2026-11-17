@@ -1,5 +1,5 @@
 # Booking Lapangan API  
-Backend Take Home Test – Sagara Asia Teknologi  
+Backend Take Home Test  
 
 ---
 
